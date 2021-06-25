@@ -36,3 +36,227 @@ Completed 200 OK in 151ms (Views: 103.7ms | ActiveRecord: 0.0ms | Allocations: 2
 
 
   [1m[36mMessage Load (2.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mMessage Load (63.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2021-06-25 10:13:23 +1000
+  [1m[35m (61.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/jairo/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/jairo/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 179.9ms | Allocations: 294)
+Completed 200 OK in 392ms (Views: 279.4ms | ActiveRecord: 0.0ms | Allocations: 1532)
+
+
+Started GET "/messages" for ::1 at 2021-06-25 10:13:38 +1000
+Processing by MessagesController#index as HTML
+  [1m[36mMessage Load (1.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `index'
+Completed 200 OK in 39ms (Views: 17.2ms | ActiveRecord: 17.3ms | Allocations: 3987)
+
+
+Started GET "/messages" for ::1 at 2021-06-25 10:24:27 +1000
+  
+SyntaxError (/mnt/c/coder-academy/js/fx2-week9/chatti_api/app/controllers/messages_controller.rb:19: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/messages_controller.rb:19: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/messages_controller.rb:19: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/messages" for ::1 at 2021-06-25 10:25:50 +1000
+Processing by MessagesController#index as */*
+  [1m[36mMessage Load (4.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `index'
+Completed 200 OK in 114ms (Views: 25.7ms | ActiveRecord: 73.4ms | Allocations: 3711)
+
+
+Started POST "/messages" for ::1 at 2021-06-25 10:26:54 +1000
+Processing by MessagesController#create as */*
+  Parameters: {"m_text"=>"Do you like postman?", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:9:in `create'
+  [1m[36mMessage Create (14.6ms)[0m  [1m[32mINSERT INTO "messages" ("m_text", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["m_text", "Do you like postman?"], ["created_at", "2021-06-25 00:26:54.246595"], ["updated_at", "2021-06-25 00:26:54.246595"]]
+  ↳ app/controllers/messages_controller.rb:9:in `create'
+  [1m[35m (26.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:9:in `create'
+Completed 201 Created in 54ms (Views: 1.1ms | ActiveRecord: 42.3ms | Allocations: 2614)
+
+
+Started GET "/messages" for ::1 at 2021-06-25 10:27:52 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"m_text"=>"Do you like postman?", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[36mMessage Load (2.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 12.3ms | ActiveRecord: 2.7ms | Allocations: 1227)
+
+
+Started GET "/messages" for ::1 at 2021-06-25 10:28:33 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"text"=>"Do you like postman?", "message"=>{}}
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.8ms | Allocations: 1208)
+
+
+Started POST "/messages" for ::1 at 2021-06-25 10:28:46 +1000
+Processing by MessagesController#create as */*
+  Parameters: {"text"=>"Do you like postman?", "message"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 127)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: message):
+  
+app/controllers/messages_controller.rb:18:in `message_params'
+app/controllers/messages_controller.rb:9:in `create'
+Started POST "/messages" for ::1 at 2021-06-25 10:29:13 +1000
+Processing by MessagesController#create as */*
+  Parameters: {"m_text"=>"Do you like postman?", "username"=>"jairo", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:9:in `create'
+  [1m[36mMessage Create (3.4ms)[0m  [1m[32mINSERT INTO "messages" ("m_text", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["m_text", "Do you like postman?"], ["created_at", "2021-06-25 00:29:13.056761"], ["updated_at", "2021-06-25 00:29:13.056761"]]
+  ↳ app/controllers/messages_controller.rb:9:in `create'
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:9:in `create'
+Completed 201 Created in 37ms (Views: 2.3ms | ActiveRecord: 10.0ms | Allocations: 2438)
+
+
+Started GET "/messages/1" for ::1 at 2021-06-25 10:38:01 +1000
+  
+SyntaxError (/mnt/c/coder-academy/js/fx2-week9/chatti_api/config/routes.rb:5: syntax error, unexpected local variable or method, expecting `end'
+  get '/messages/:id' to: 'messages#show'
+                      ^~
+):
+  
+config/routes.rb:5: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:5: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/messages/1" for ::1 at 2021-06-25 10:38:30 +1000
+  
+SyntaxError (/mnt/c/coder-academy/js/fx2-week9/chatti_api/config/routes.rb:5: syntax error, unexpected local variable or method, expecting `end'
+  get '/messages/:id' to: 'messages#show'
+                      ^~
+):
+  
+config/routes.rb:5: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:5: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/messages/1" for ::1 at 2021-06-25 10:39:45 +1000
+Processing by MessagesController#show as */*
+  Parameters: {"m_text"=>"Do you like postman?", "id"=>"1", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[36mMessage Load (30.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:23:in `find_message'
+Completed 200 OK in 65ms (Views: 0.5ms | ActiveRecord: 31.7ms | Allocations: 3098)
+
+
+Started GET "/messages/98" for ::1 at 2021-06-25 10:39:56 +1000
+Processing by MessagesController#show as */*
+  Parameters: {"m_text"=>"Do you like postman?", "id"=>"98", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[36mMessage Load (2.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:23:in `find_message'
+Completed 404 Not Found in 7ms (ActiveRecord: 2.5ms | Allocations: 626)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Message with 'id'=98):
+  
+app/controllers/messages_controller.rb:23:in `find_message'
+Started GET "/messages/98" for ::1 at 2021-06-25 10:41:49 +1000
+Processing by MessagesController#show as */*
+  Parameters: {"m_text"=>"Do you like postman?", "id"=>"98", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[36mMessage Load (2.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:24:in `find_message'
+Filter chain halted as :find_message rendered or redirected
+Completed 404 Not Found in 29ms (Views: 1.0ms | ActiveRecord: 45.5ms | Allocations: 840)
+
+
+Started GET "/api/messages/98" for ::1 at 2021-06-25 10:50:44 +1000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#show as */*
+  Parameters: {"m_text"=>"Do you like postman?", "id"=>"98", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:24:in `find_message'
+Filter chain halted as :find_message rendered or redirected
+Completed 404 Not Found in 8ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 1260)
+
+
+Started GET "/api/messages" for ::1 at 2021-06-25 10:50:49 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"m_text"=>"Do you like postman?", "message"=>{"m_text"=>"Do you like postman?"}}
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.7ms | Allocations: 3393)
+
+
+Started PUT "/api/messages/5" for ::1 at 2021-06-25 10:54:45 +1000
+Processing by MessagesController#update as */*
+  Parameters: {"m_text"=>"Do you like client http?", "id"=>"5", "message"=>{"m_text"=>"Do you like client http?"}}
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:33:in `find_message'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:19:in `update'
+  [1m[36mMessage Update (6.5ms)[0m  [1m[33mUPDATE "messages" SET "m_text" = $1, "updated_at" = $2 WHERE "messages"."id" = $3[0m  [["m_text", "Do you like client http?"], ["updated_at", "2021-06-25 00:54:45.587857"], ["id", 5]]
+  ↳ app/controllers/messages_controller.rb:19:in `update'
+  [1m[35m (11.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:19:in `update'
+Completed 201 Created in 37ms (Views: 0.5ms | ActiveRecord: 25.2ms | Allocations: 5219)
+
+
+Started GET "/api/messages" for ::1 at 2021-06-25 10:55:26 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"m_text"=>"Do you like client http?", "message"=>{"m_text"=>"Do you like client http?"}}
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.6ms | Allocations: 1317)
+
+
+Started GET "/api/messages" for ::1 at 2021-06-25 10:58:50 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"m_text"=>"Do you like client http?", "message"=>{"m_text"=>"Do you like client http?"}}
+  [1m[36mMessage Load (11.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY updated_at DESC[0m
+  ↳ app/controllers/messages_controller.rb:6:in `index'
+Completed 200 OK in 23ms (Views: 7.9ms | ActiveRecord: 18.0ms | Allocations: 3240)
+
+
+Started PUT "/api/messages/3" for ::1 at 2021-06-25 10:59:24 +1000
+Processing by MessagesController#update as */*
+  Parameters: {"m_text"=>"Dogecoin, what are you doing?", "id"=>"3", "message"=>{"m_text"=>"Dogecoin, what are you doing?"}}
+  [1m[36mMessage Load (3.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:33:in `find_message'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:19:in `update'
+  [1m[36mMessage Update (3.4ms)[0m  [1m[33mUPDATE "messages" SET "m_text" = $1, "updated_at" = $2 WHERE "messages"."id" = $3[0m  [["m_text", "Dogecoin, what are you doing?"], ["updated_at", "2021-06-25 00:59:24.542875"], ["id", 3]]
+  ↳ app/controllers/messages_controller.rb:19:in `update'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:19:in `update'
+Completed 201 Created in 16ms (Views: 0.4ms | ActiveRecord: 7.3ms | Allocations: 4909)
+
+
+Started GET "/api/messages" for ::1 at 2021-06-25 10:59:36 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"m_text"=>"Dogecoin, what are you doing?", "message"=>{"m_text"=>"Dogecoin, what are you doing?"}}
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY updated_at DESC[0m
+  ↳ app/controllers/messages_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 1357)
+
+
+Started DELETE "/api/messages/3" for ::1 at 2021-06-25 11:03:41 +1000
+Processing by MessagesController#destroy as */*
+  Parameters: {"m_text"=>"Dogecoin, what are you doing?", "id"=>"3", "message"=>{"m_text"=>"Dogecoin, what are you doing?"}}
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:38:in `find_message'
+  [1m[36mMessage Destroy (2.2ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/messages_controller.rb:32:in `destroy'
+Completed 204 No Content in 14ms (Views: 0.4ms | ActiveRecord: 7.8ms | Allocations: 3117)
+
+
+Started GET "/api/messages/3" for ::1 at 2021-06-25 11:03:59 +1000
+Processing by MessagesController#show as */*
+  Parameters: {"m_text"=>"Dogecoin, what are you doing?", "id"=>"3", "message"=>{"m_text"=>"Dogecoin, what are you doing?"}}
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:38:in `find_message'
+Filter chain halted as :find_message rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 651)
+
+
+Started GET "/api/messages/" for ::1 at 2021-06-25 11:04:04 +1000
+Processing by MessagesController#index as */*
+  Parameters: {"m_text"=>"Dogecoin, what are you doing?", "message"=>{"m_text"=>"Dogecoin, what are you doing?"}}
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY updated_at DESC[0m
+  ↳ app/controllers/messages_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.7ms | Allocations: 1243)
+
+
