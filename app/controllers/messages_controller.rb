@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
+    before_action :authenticate_user, except: [:index, :show] 
     before_action :find_message, only: [:show, :update, :destroy]
+    before_action :check_ownership, only: [:destroy, :update] 
 
     def index
         @messages = Message.order('updated_at DESC')
@@ -7,7 +9,8 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @message = Message.create(message_params)
+        #@message = Message.create(message_params)
+        @message = current_user.messages.create(message_params)
         if @message.errors.any?
             render json: @message.errors, status: :unprocessable_entity
         else
@@ -38,6 +41,12 @@ class MessagesController < ApplicationController
             @message = Message.find(params[:id])
         rescue
             render json: {error: "message does not exist"}, status: 404
+        end
+    end
+
+    def check_ownership
+        if current_user.id != @message.user.id
+            render json: {error: "not allowed to do that"}
         end
     end
     private

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get '/messages/:id', to: 'messages#show'
     put '/messages/:id', to: 'messages#update'
     delete '/messages/:id', to: 'messages#destroy'
+    scope '/auth' do
+      post '/sign_up', to: 'users#create'
+      post '/sign_in', to: 'users#sign_in'
+    end
   end
 
 end
