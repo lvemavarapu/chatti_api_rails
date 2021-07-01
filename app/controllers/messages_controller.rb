@@ -4,7 +4,16 @@ class MessagesController < ApplicationController
     before_action :check_ownership, only: [:destroy, :update] 
 
     def index
-        @messages = Message.order('updated_at DESC')
+        @messages = []
+        if (params[:username])
+            Message.find_by_user(params[:username]).order('updated_at DESC').each do |msg|
+                @messages << Message.find_by(id: msg.id).transform_message
+            end
+        else
+            Message.order('updated_at DESC').each do |msg|
+                @messages << Message.find_by(id: msg.id).transform_message
+            end
+        end
         render json: @messages
     end
 
@@ -28,12 +37,20 @@ class MessagesController < ApplicationController
     end
 
     def show
-        render json: @message
+        render json: @message.transform_message
     end
 
     def destroy
         @message.delete
         render json: {message: "Message deleted"}, status: 204
+    end
+
+    def my_messages
+        @messages = []
+        Message.find_by_user(current_user.username).order('updated_at DESC').each do |msg|
+            @messages << Message.find_by(id: msg.id).transform_message
+        end
+        render json: @messages
     end
 
     def find_message
