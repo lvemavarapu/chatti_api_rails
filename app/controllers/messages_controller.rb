@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
         if @message.errors.any?
             render json: @message.errors, status: :unprocessable_entity
         else
-            render json: @message, status: 201
+            render json: @message.transform_message, status: 201
         end
     end
 
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
         if @message.errors.any?
             render json: @message.errors, status: :unprocessable_entity
         else
-            render json: @message, status: 201
+            render json: @message.transform_message, status: 201
         end
     end
 
