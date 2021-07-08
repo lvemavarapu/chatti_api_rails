@@ -62,8 +62,10 @@ class MessagesController < ApplicationController
     end
 
     def check_ownership
-        if current_user.id != @message.user.id
-            render json: {error: "not allowed to do that"}
+        if !current_user.isAdmin
+            if current_user.id != @message.user.id
+                render json: {error: "not allowed to do that"}
+            end
         end
     end
     private
